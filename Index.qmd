@@ -4,25 +4,50 @@ format: revealjs
 editor: visual
 ---
 
-# Introducción
 
 ## ¿Qué es una función?
 
-En R, una función es un bloque de código organizado que realiza una tarea específica. Se utiliza para estructurar, organizar y reutilizar código, facilitando el desarrollo y el mantenimiento de programas. 
+En R, una función es un bloque de código organizado que realiza una tarea específica. Se utiliza para estructurar, organizar y reutilizar código, facilitando el desarrollo y el mantenimiento de programas.
 
-No es mas que otro objeto de R como una base de datos o una matriz 
 
-## Para que las usamos 
+No es mas que otro objeto de R como una base de datos o una matriz
 
-When you click the **Render** button a document will be generated that includes:
+## ¿Qué es una función?
 
--   Content authored with markdown
--   Output from executable code
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+Una función tiene un nombre, argumentos y un cuerpo.
 
 ```{r}
-1 + 1
+nombre <- function(argumentos) {
+  operaciones
+}
+```
+
+-- nombre: como ejecutamos la función
+
+-- argumentos: inputs que necesita la funcion
+
+-- operaciones: es el cuerpo de la funcion. Lo que se va a ejecutar.
+
+## Un ejemplo
+
+
+```{r}
+promedio <- function(x){
+  
+  conteo = 0
+  suma = 0
+  
+  for(n in x){
+    
+    conteo = conteo + 1
+    suma = suma + n
+    
+  }
+   
+  prom = suma / conteo
+  prom
+}
+
+promedio(c(1,2,3,4,5,6,7,8))
+
 ```
