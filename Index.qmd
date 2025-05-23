@@ -4,13 +4,15 @@ format: revealjs
 editor: visual
 ---
 
-# Introducci髇
+# Introducci贸n
 
-## Quarto
+## 驴Qu茅 es una funci贸n?
 
-Quarto enables you to weave together co ntent and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+En R, una funci贸n es un bloque de c贸digo organizado que realiza una tarea espec铆fica. Se utiliza para estructurar, organizar y reutilizar c贸digo, facilitando el desarrollo y el mantenimiento de programas. 
 
-## Bullets
+No es mas que otro objeto de R como una base de datos o una matriz 
+
+## Para que las usamos 
 
 When you click the **Render** button a document will be generated that includes:
 
