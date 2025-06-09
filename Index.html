@@ -8,9 +8,9 @@
 <link href="Index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.3.353">
 
-  <title>Funciones en R</title>
+  <title>Funciones en R (Base)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -389,55 +389,98 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Funciones en R</h1>
+  <h1 class="title">Funciones en R (Base)</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
+<section id="introducción" class="title-slide slide level1 center">
+<h1>Introducción</h1>
+<ul>
+<li>Las funciones son bloques de código reutilizables.</li>
+<li>Permiten escribir programas más ordenados, legibles y mantenibles.</li>
+<li>Hoy veremos cómo se definen, usan y evalúan funciones en <strong>R base</strong>.</li>
+</ul>
+</section>
+
+<section>
+<section id="por-qué-usamos-funciones" class="title-slide slide level1 center">
+<h1>¿Por qué usamos funciones?</h1>
+
+</section>
+<section id="ventajas-de-usar-funciones" class="slide level2">
+<h2>Ventajas de usar funciones</h2>
+<ul>
+<li>✂️ <strong>Evitan repetir código</strong></li>
+<li>🧩 <strong>Dividen el problema en partes</strong></li>
+<li>🛠️ <strong>Facilitan la depuración y pruebas</strong></li>
+<li>♻️ <strong>Hacen que el código sea reutilizable</strong></li>
+</ul>
+</section>
 <section id="qué-es-una-función" class="slide level2">
 <h2>¿Qué es una función?</h2>
-<p>En R, una función es un bloque de código organizado que realiza una tarea específica. Se utiliza para estructurar, organizar y reutilizar código, facilitando el desarrollo y el mantenimiento de programas.</p>
-<p>No es mas que otro objeto de R como una base de datos o una matriz</p>
-</section>
-<section id="qué-es-una-función-1" class="slide level2">
-<h2>¿Qué es una función?</h2>
 <p>Una función tiene un nombre, argumentos y un cuerpo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>nombre <span class="ot">&lt;-</span> <span class="cf">function</span>(argumentos) {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  operaciones</span>
+<span id="cb1-3"><a href="#cb1-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
 <p>– nombre: como ejecutamos la función</p>
 <p>– argumentos: inputs que necesita la funcion</p>
 <p>– operaciones: es el cuerpo de la funcion. Lo que se va a ejecutar.</p>
 </section>
-<section id="un-ejemplo" class="slide level2">
+<section id="qué-es-una-función-output" class="slide level2 output-location-slide"><h2>¿Qué es una función?</h2><div class="cell output-location-slide">
+
+</div></section><section id="un-ejemplo" class="slide level2">
 <h2>Un ejemplo</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>promedio <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  conteo <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  suma <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>  </span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="cf">for</span>(n <span class="cf">in</span> x){</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    </span>
-<span id="cb1-8"><a href="#cb1-8"></a>    conteo <span class="ot">=</span> conteo <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    suma <span class="ot">=</span> suma <span class="sc">+</span> n</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    </span>
-<span id="cb1-11"><a href="#cb1-11"></a>  }</span>
-<span id="cb1-12"><a href="#cb1-12"></a>   </span>
-<span id="cb1-13"><a href="#cb1-13"></a>  prom <span class="ot">=</span> suma <span class="sc">/</span> conteo</span>
-<span id="cb1-14"><a href="#cb1-14"></a>  prom</span>
-<span id="cb1-15"><a href="#cb1-15"></a>}</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="fu">promedio</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-<div class="footer footer-default">
-
-</div>
-</section>
-    <section id="un-ejemplo-output" class="slide level2 output-location-slide"><h2>Un ejemplo</h2><div class="cell output-location-slide">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>promedio <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  conteo <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  suma <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  </span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="cf">for</span>(n <span class="cf">in</span> x){</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    conteo <span class="ot">=</span> conteo <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>    suma <span class="ot">=</span> suma <span class="sc">+</span> n</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  }</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  prom <span class="ot">=</span> suma <span class="sc">/</span> conteo</span>
+<span id="cb2-11"><a href="#cb2-11"></a>  prom</span>
+<span id="cb2-12"><a href="#cb2-12"></a>}</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="fu">promedio</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.5</code></pre>
 </div>
-</div></section></div>
+</div>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="ejemplo-imputar-valores-faltantes" class="title-slide slide level1 center">
+<h1>Ejemplo: imputar valores faltantes</h1>
+
+</section>
+<section id="qué-problema-queremos-resolver" class="slide level2">
+<h2>¿Qué problema queremos resolver?</h2>
+<ul>
+<li>Tenemos una variable numérica con algunos valores <code>NA</code>.</li>
+<li>Queremos reemplazar los <code>NA</code> por el <strong>promedio de los valores no faltantes</strong>.</li>
+<li>Lo haremos primero con código suelto y luego con una función.</li>
+</ul>
+</section>
+<section id="código-sin-función" class="slide level2">
+<h2>Código sin función</h2>
+</section>
+<section id="función" class="slide level2">
+<h2>Función</h2>
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>

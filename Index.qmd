@@ -1,20 +1,36 @@
 ---
-title: "Funciones en R"
+title: "Funciones en R (Base)"
 format: revealjs
-editor: visual
+editor: source
 ---
 
-## ¿Qué es una función?
+# Introducción
 
-En R, una función es un bloque de código organizado que realiza una tarea específica. Se utiliza para estructurar, organizar y reutilizar código, facilitando el desarrollo y el mantenimiento de programas.
+-   Las funciones son bloques de código reutilizables.
+-   Permiten escribir programas más ordenados, legibles y mantenibles.
+-   Hoy veremos cómo se definen, usan y evalúan funciones en **R base**.
 
-No es mas que otro objeto de R como una base de datos o una matriz
 
-## ¿Qué es una función?
+# ¿Por qué usamos funciones?
+
+---
+
+## Ventajas de usar funciones
+
+- ✂️ **Evitan repetir código**
+- 🧩 **Dividen el problema en partes**
+- 🛠️ **Facilitan la depuración y pruebas**
+- ♻️ **Hacen que el código sea reutilizable**
+
+---
+
+# ¿Qué es una función?
 
 Una función tiene un nombre, argumentos y un cuerpo.
 
 ```{r}
+#| echo: true
+#| output-location: slide
 nombre <- function(argumentos) {
   operaciones
 }
@@ -30,7 +46,6 @@ nombre <- function(argumentos) {
 
 ```{r}
 #| echo: true
-#| output-location: slide
 
 promedio <- function(x){
   
@@ -38,12 +53,9 @@ promedio <- function(x){
   suma = 0
   
   for(n in x){
-    
     conteo = conteo + 1
     suma = suma + n
-    
   }
-   
   prom = suma / conteo
   prom
 }
@@ -51,3 +63,87 @@ promedio <- function(x){
 promedio(c(1,2,3,4,5,6,7,8))
 
 ```
+
+
+# Ejemplo: imputar valores faltantes
+
+---
+
+## ¿Qué problema queremos resolver?
+
+- Tenemos una variable numérica con algunos valores `NA`.
+- Queremos reemplazar los `NA` por el **promedio de los valores no faltantes**.
+- Lo haremos primero con código suelto y luego con una función.
+
+---
+
+## Código sin función
+
+```{r}
+#| echo: true
+x <- c(1.5, 2.1, NA, 4.0)
+x[is.na(x)] <- mean(x, na.rm = TRUE)
+```
+
+## Función  
+
+```{r}
+#| echo: true
+imputar_media <- function(vec) {
+  vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
+  return(vec)
+}
+x <- imputar_media(c(1.5, 2.1, NA, 4.0))
+```
+
+✅ Más limpio, claro y reutilizable.
+
+# Gestión de errores
+
+##¿Por qué es importante validar?
+
+- Prevenir errores inesperados.
+
+- Mejorar la robustez del código.
+
+- Comunicar al usuario qué está mal.
+
+---
+
+## Ejemplo 1:
+
+```{r}
+#| echo: true
+imputar_media <- function(vec) {
+  if (!is.numeric(vec)) {
+    stop("La variable debe ser numérica.")
+  }
+  vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
+  return(vec)
+}
+```
+
+---
+
+## Ejemplo 2: Advertencias
+
+```{r}
+#| echo: true
+if (all(is.na(vec))) {
+  warning("Todos los valores son NA. Se devuelve el vector original.")
+  return(vec)
+}
+```
+
+
+# Valores por defecto
+
+## ¿Qué son los valores por defecto?
+
+Argumentos que toman un valor predeterminado si no se especifican.
+
+Permiten que la función sea más flexible y fácil de usar.
+
+---
+
+Ejemplo: dos formas de imputación
