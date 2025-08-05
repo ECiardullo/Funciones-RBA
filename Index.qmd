@@ -1,5 +1,6 @@
 ---
-title: "Funciones en R (Base)"
+title: "Funciones en R Base: Con paciencia y coraje"
+subtitle: "Una introducción práctica al diseño y uso de funciones sin depender de paquetes"
 format: revealjs
 editor: source
 ---
@@ -17,10 +18,10 @@ editor: source
 
 ## Ventajas de usar funciones
 
-- ✂️ **Evitan repetir código**
-- 🧩 **Dividen el problema en partes**
-- 🛠️ **Facilitan la depuración y pruebas**
-- ♻️ **Hacen que el código sea reutilizable**
+- **Evitan repetir código**
+- **Dividen el problema en partes**
+- **Facilitan la depuración y pruebas**
+- **Hacen que el código sea reutilizable**
 
 ---
 
@@ -42,28 +43,6 @@ nombre <- function(argumentos) {
 
 -- operaciones: es el cuerpo de la funcion. Lo que se va a ejecutar.
 
-## Un ejemplo
-
-```{r}
-#| echo: true
-
-promedio <- function(x){
-  
-  conteo = 0
-  suma = 0
-  
-  for(n in x){
-    conteo = conteo + 1
-    suma = suma + n
-  }
-  prom = suma / conteo
-  prom
-}
-
-promedio(c(1,2,3,4,5,6,7,8))
-
-```
-
 
 # Ejemplo: imputar valores faltantes
 
@@ -82,7 +61,9 @@ promedio(c(1,2,3,4,5,6,7,8))
 ```{r}
 #| echo: true
 x <- c(1.5, 2.1, NA, 4.0)
+
 x[is.na(x)] <- mean(x, na.rm = TRUE)
+
 ```
 
 ## Función  
@@ -90,13 +71,16 @@ x[is.na(x)] <- mean(x, na.rm = TRUE)
 ```{r}
 #| echo: true
 imputar_media <- function(vec) {
-  vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
-  return(vec)
+ 
+   vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
+  
+   return(vec)
 }
+
 x <- imputar_media(c(1.5, 2.1, NA, 4.0))
 ```
 
-✅ Más limpio, claro y reutilizable.
+Mas claro y reutilizable.
 
 # Gestión de errores
 
@@ -147,3 +131,60 @@ Permiten que la función sea más flexible y fácil de usar.
 ---
 
 Ejemplo: dos formas de imputación
+
+```{r}
+#| echo: true
+imputar_valor <- function(vec, metodo = "media") {
+  if (metodo == "media") {
+    vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
+  } else if (metodo == "mediana") {
+    vec[is.na(vec)] <-  median(vec, na.rm = TRUE)
+  } else {
+    stop("Método inválido.")
+  }
+  return(vec)
+}
+
+```
+
+```{r}
+#| echo: true
+imputar_valor(c(1, NA, 3, 8))
+imputar_valor(c(1, NA, 3, 8), metodo = "mediana")
+
+```
+
+# Uso de return()
+
+• Devuelve un valor explícito
+• Mejora claridad del código
+• No siempre es obligatorio (pero si recomendable!!)
+
+
+```{r}
+#| echo: true
+suma_cuadrados <- function(a, b) {
+  resultado <- a^2 + b^2
+  return(resultado)
+}
+
+suma_cuadrados <- function(a, b) {
+  a^2 + b^2
+}
+
+```
+
+# Testeo de funciones
+
+• Confirma que la función hace lo esperado
+• Detecta errores antes de usarlas en producción
+
+
+```{r}
+#| echo: true
+stopifnot(
+imputar_valor(c(1, NA, 3, 8))[2] = mean(c(1,3,8)) &
+imputar_valor(c(1, NA, 3, 8), metodo = "mediana")[2] = median(c(1,3,8))
+)
+
+```
