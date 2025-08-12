@@ -99,9 +99,11 @@ Mas claro y reutilizable.
 ```{r}
 #| echo: true
 imputar_media <- function(vec) {
+  
   if (!is.numeric(vec)) {
     stop("La variable debe ser numérica.")
   }
+  
   vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
   return(vec)
 }
@@ -113,10 +115,21 @@ imputar_media <- function(vec) {
 
 ```{r}
 #| echo: true
-if (all(is.na(vec))) {
-  warning("Todos los valores son NA. Se devuelve el vector original.")
+imputar_media <- function(vec) {
+  
+  if (!is.numeric(vec)) {
+    stop("La variable debe ser numérica.")
+  }
+  
+  if (all(is.na(vec))) {
+    warning("Todos los valores son NA. Se devuelve el vector original.")
+    return(vec)
+  }
+  
+  vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
   return(vec)
 }
+
 ```
 
 
@@ -135,13 +148,19 @@ Ejemplo: dos formas de imputación
 ```{r}
 #| echo: true
 imputar_valor <- function(vec, metodo = "media") {
+  
   if (metodo == "media") {
+    
     vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
+    
   } else if (metodo == "mediana") {
+    
     vec[is.na(vec)] <-  median(vec, na.rm = TRUE)
+    
   } else {
     stop("Método inválido.")
   }
+  
   return(vec)
 }
 
@@ -183,8 +202,35 @@ suma_cuadrados <- function(a, b) {
 ```{r}
 #| echo: true
 stopifnot(
-imputar_valor(c(1, NA, 3, 8))[2] = mean(c(1,3,8)) &
-imputar_valor(c(1, NA, 3, 8), metodo = "mediana")[2] = median(c(1,3,8))
+imputar_valor(c(1, NA, 3, 8))[2] == mean(c(1,3,8)) &
+imputar_valor(c(1, NA, 3, 8), metodo = "mediana")[2] == median(c(1,3,8))
 )
 
+```
+
+# Evaluar eficiencia 
+
+¿Por qué importa la eficiencia?
+
+Algunas funciones se ejecutan miles de veces o sobre de bases de datos muy grandes.
+La velocidad de ejecución puede afectar el rendimiento del análisis.
+
+```{r}
+#| echo: true
+imputar_loop <- function(vec) {
+  for (i in seq_along(vec)) {
+    if (is.na(vec[i])) {
+      vec[i] <- mean(vec, na.rm = TRUE)
+    }
+  }
+  return(vec)
+}
+```
+
+```{r}
+#| echo: true
+x <- rep(c(1:100, NA), 10000)
+
+system.time(imputar_loop(x))         
+system.time(imputar_valor(x)) 
 ```

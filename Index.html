@@ -8,9 +8,9 @@
 <link href="Index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
-  <title>Funciones en R (Base)</title>
+  <title>Funciones en R Base: Con paciencia y coraje</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -389,7 +389,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Funciones en R (Base)</h1>
+  <h1 class="title">Funciones en R Base: Con paciencia y coraje</h1>
+  <p class="subtitle">Una introducción práctica al diseño y uso de funciones sin depender de paquetes</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -412,14 +413,17 @@
 <section id="ventajas-de-usar-funciones" class="slide level2">
 <h2>Ventajas de usar funciones</h2>
 <ul>
-<li>✂️ <strong>Evitan repetir código</strong></li>
-<li>🧩 <strong>Dividen el problema en partes</strong></li>
-<li>🛠️ <strong>Facilitan la depuración y pruebas</strong></li>
-<li>♻️ <strong>Hacen que el código sea reutilizable</strong></li>
+<li><strong>Evitan repetir código</strong></li>
+<li><strong>Dividen el problema en partes</strong></li>
+<li><strong>Facilitan la depuración y pruebas</strong></li>
+<li><strong>Hacen que el código sea reutilizable</strong></li>
 </ul>
 </section>
-<section id="qué-es-una-función" class="slide level2">
-<h2>¿Qué es una función?</h2>
+<section class="slide level2">
+
+</section></section>
+<section id="qué-es-una-función" class="title-slide slide level1 center">
+<h1>¿Qué es una función?</h1>
 <p>Una función tiene un nombre, argumentos y un cuerpo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>nombre <span class="ot">&lt;-</span> <span class="cf">function</span>(argumentos) {</span>
@@ -431,34 +435,10 @@
 <p>– argumentos: inputs que necesita la funcion</p>
 <p>– operaciones: es el cuerpo de la funcion. Lo que se va a ejecutar.</p>
 </section>
-<section id="qué-es-una-función-output" class="slide level2 output-location-slide"><h2>¿Qué es una función?</h2><div class="cell output-location-slide">
 
-</div></section><section id="un-ejemplo" class="slide level2">
-<h2>Un ejemplo</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>promedio <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  conteo <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>  suma <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  </span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="cf">for</span>(n <span class="cf">in</span> x){</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    conteo <span class="ot">=</span> conteo <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>    suma <span class="ot">=</span> suma <span class="sc">+</span> n</span>
-<span id="cb2-9"><a href="#cb2-9"></a>  }</span>
-<span id="cb2-10"><a href="#cb2-10"></a>  prom <span class="ot">=</span> suma <span class="sc">/</span> conteo</span>
-<span id="cb2-11"><a href="#cb2-11"></a>  prom</span>
-<span id="cb2-12"><a href="#cb2-12"></a>}</span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="fu">promedio</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.5</code></pre>
-</div>
-</div>
-</section>
-<section class="slide level2">
+<section id="qué-es-una-función-output" class="title-slide slide level1 output-location-slide center"><h1>¿Qué es una función?</h1><div class="cell output-location-slide">
 
-</section></section>
-<section>
+</div></section><section>
 <section id="ejemplo-imputar-valores-faltantes" class="title-slide slide level1 center">
 <h1>Ejemplo: imputar valores faltantes</h1>
 
@@ -473,13 +453,169 @@
 </section>
 <section id="código-sin-función" class="slide level2">
 <h2>Código sin función</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="cn">NA</span>, <span class="fl">4.0</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>x[<span class="fu">is.na</span>(x)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="función" class="slide level2">
 <h2>Función</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>imputar_media <span class="ot">&lt;-</span> <span class="cf">function</span>(vec) {</span>
+<span id="cb3-2"><a href="#cb3-2"></a> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>   vec[<span class="fu">is.na</span>(vec)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  </span>
+<span id="cb3-5"><a href="#cb3-5"></a>   <span class="fu">return</span>(vec)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>}</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>x <span class="ot">&lt;-</span> <span class="fu">imputar_media</span>(<span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="cn">NA</span>, <span class="fl">4.0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Mas claro y reutilizable.</p>
+</section></section>
+<section>
+<section id="gestión-de-errores" class="title-slide slide level1 center">
+<h1>Gestión de errores</h1>
+<p>##¿Por qué es importante validar?</p>
+<ul>
+<li><p>Prevenir errores inesperados.</p></li>
+<li><p>Mejorar la robustez del código.</p></li>
+<li><p>Comunicar al usuario qué está mal.</p></li>
+</ul>
+</section>
+<section id="ejemplo-1" class="slide level2">
+<h2>Ejemplo 1:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>imputar_media <span class="ot">&lt;-</span> <span class="cf">function</span>(vec) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(vec)) {</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="fu">stop</span>(<span class="st">"La variable debe ser numérica."</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  }</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  </span>
+<span id="cb4-7"><a href="#cb4-7"></a>  vec[<span class="fu">is.na</span>(vec)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">return</span>(vec)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ejemplo-2-advertencias" class="slide level2">
+<h2>Ejemplo 2: Advertencias</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>imputar_media <span class="ot">&lt;-</span> <span class="cf">function</span>(vec) {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(vec)) {</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="fu">stop</span>(<span class="st">"La variable debe ser numérica."</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  }</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  </span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="cf">if</span> (<span class="fu">all</span>(<span class="fu">is.na</span>(vec))) {</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="fu">warning</span>(<span class="st">"Todos los valores son NA. Se devuelve el vector original."</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="fu">return</span>(vec)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>  }</span>
+<span id="cb5-11"><a href="#cb5-11"></a>  </span>
+<span id="cb5-12"><a href="#cb5-12"></a>  vec[<span class="fu">is.na</span>(vec)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  <span class="fu">return</span>(vec)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="valores-por-defecto" class="title-slide slide level1 center">
+<h1>Valores por defecto</h1>
+
+</section>
+<section id="qué-son-los-valores-por-defecto" class="slide level2">
+<h2>¿Qué son los valores por defecto?</h2>
+<p>Argumentos que toman un valor predeterminado si no se especifican.</p>
+<p>Permiten que la función sea más flexible y fácil de usar.</p>
+</section>
+<section class="slide level2">
+
+<p>Ejemplo: dos formas de imputación</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>imputar_valor <span class="ot">&lt;-</span> <span class="cf">function</span>(vec, <span class="at">metodo =</span> <span class="st">"media"</span>) {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="cf">if</span> (metodo <span class="sc">==</span> <span class="st">"media"</span>) {</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    </span>
+<span id="cb6-5"><a href="#cb6-5"></a>    vec[<span class="fu">is.na</span>(vec)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    </span>
+<span id="cb6-7"><a href="#cb6-7"></a>  } <span class="cf">else</span> <span class="cf">if</span> (metodo <span class="sc">==</span> <span class="st">"mediana"</span>) {</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9"></a>    vec[<span class="fu">is.na</span>(vec)] <span class="ot">&lt;-</span>  <span class="fu">median</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    </span>
+<span id="cb6-11"><a href="#cb6-11"></a>  } <span class="cf">else</span> {</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="fu">stop</span>(<span class="st">"Método inválido."</span>)</span>
+<span id="cb6-13"><a href="#cb6-13"></a>  }</span>
+<span id="cb6-14"><a href="#cb6-14"></a>  </span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="fu">return</span>(vec)</span>
+<span id="cb6-16"><a href="#cb6-16"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4 3 8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>), <span class="at">metodo =</span> <span class="st">"mediana"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 3 3 8</code></pre>
+</div>
+</div>
+</section></section>
+<section id="uso-de-return" class="title-slide slide level1 center">
+<h1>Uso de return()</h1>
+<p>• Devuelve un valor explícito • Mejora claridad del código • No siempre es obligatorio (pero si recomendable!!)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>suma_cuadrados <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  resultado <span class="ot">&lt;-</span> a<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">return</span>(resultado)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>}</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a>suma_cuadrados <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb11-7"><a href="#cb11-7"></a>  a<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="testeo-de-funciones" class="title-slide slide level1 center">
+<h1>Testeo de funciones</h1>
+<p>• Confirma que la función hace lo esperado • Detecta errores antes de usarlas en producción</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">stopifnot</span>(</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>))[<span class="dv">2</span>] <span class="sc">==</span> <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">8</span>)) <span class="sc">&amp;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>), <span class="at">metodo =</span> <span class="st">"mediana"</span>)[<span class="dv">2</span>] <span class="sc">==</span> <span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">8</span>))</span>
+<span id="cb12-4"><a href="#cb12-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="evaluar-eficiencia" class="title-slide slide level1 center">
+<h1>Evaluar eficiencia</h1>
+<p>¿Por qué importa la eficiencia?</p>
+<p>Algunas funciones se ejecutan miles de veces o sobre de bases de datos muy grandes. La velocidad de ejecución puede afectar el rendimiento del análisis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>imputar_loop <span class="ot">&lt;-</span> <span class="cf">function</span>(vec) {</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(vec)) {</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="cf">if</span> (<span class="fu">is.na</span>(vec[i])) {</span>
+<span id="cb13-4"><a href="#cb13-4"></a>      vec[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>    }</span>
+<span id="cb13-6"><a href="#cb13-6"></a>  }</span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">return</span>(vec)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="cn">NA</span>), <span class="dv">10000</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">system.time</span>(<span class="fu">imputar_loop</span>(x))         </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+  98.18   22.17  120.61 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">system.time</span>(<span class="fu">imputar_valor</span>(x)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+   0.00    0.02    0.01 </code></pre>
+</div>
+</div>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
