@@ -1,6 +1,12 @@
 ---
 title: "Funciones en R Base: Con paciencia y coraje"
 subtitle: "Una introducción práctica al diseño y uso de funciones sin depender de paquetes"
+author: "Emanuel Ciardullo"
+institute: "R en Buenos Aires"
+lang: es
+language: 
+  title-block-author-single: "AUTOR"
+  title-block-affiliation-single: "INSTITUCION"
 format: revealjs
 editor: source
 ---
@@ -18,12 +24,11 @@ editor: source
 
 ## Ventajas de usar funciones
 
-- **Evitan repetir código**
-- **Dividen el problema en partes**
-- **Facilitan la depuración y pruebas**
-- **Hacen que el código sea reutilizable**
+- Evitan repetir código
+- Dividen el problema en partes
+- Facilitan la depuración y pruebas
+- Hacen que el código sea reutilizable
 
----
 
 # ¿Qué es una función?
 
@@ -229,7 +234,7 @@ imputar_loop <- function(vec) {
 
 ```{r}
 #| echo: true
-x <- rep(c(1:100, NA), 10000)
+x <- rep(c(1:100, NA), 10)
 
 system.time(imputar_loop(x))         
 system.time(imputar_valor(x)) 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="es"><head>
 <script src="Index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="Index_files/libs/quarto-html/tabby.min.js"></script>
 <script src="Index_files/libs/quarto-html/popper.min.js"></script>
@@ -10,6 +10,7 @@
 <link href="Index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
+  <meta name="author" content="Emanuel Ciardullo">
   <title>Funciones en R Base: Con paciencia y coraje</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -393,6 +394,14 @@
   <p class="subtitle">Una introducción práctica al diseño y uso de funciones sin depender de paquetes</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Emanuel Ciardullo 
+</div>
+        <p class="quarto-title-affiliation">
+            R en Buenos Aires
+          </p>
+    </div>
 </div>
 
 </section>
@@ -413,14 +422,11 @@
 <section id="ventajas-de-usar-funciones" class="slide level2">
 <h2>Ventajas de usar funciones</h2>
 <ul>
-<li><strong>Evitan repetir código</strong></li>
-<li><strong>Dividen el problema en partes</strong></li>
-<li><strong>Facilitan la depuración y pruebas</strong></li>
-<li><strong>Hacen que el código sea reutilizable</strong></li>
+<li>Evitan repetir código</li>
+<li>Dividen el problema en partes</li>
+<li>Facilitan la depuración y pruebas</li>
+<li>Hacen que el código sea reutilizable</li>
 </ul>
-</section>
-<section class="slide level2">
-
 </section></section>
 <section id="qué-es-una-función" class="title-slide slide level1 center">
 <h1>¿Qué es una función?</h1>
@@ -428,7 +434,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>nombre <span class="ot">&lt;-</span> <span class="cf">function</span>(argumentos) {</span>
 <span id="cb1-2"><a href="#cb1-2"></a>  operaciones</span>
-<span id="cb1-3"><a href="#cb1-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <p>– nombre: como ejecutamos la función</p>
@@ -456,7 +462,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="cn">NA</span>, <span class="fl">4.0</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>x[<span class="fu">is.na</span>(x)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a>x[<span class="fu">is.na</span>(x)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="función" class="slide level2">
@@ -469,7 +475,7 @@
 <span id="cb3-5"><a href="#cb3-5"></a>   <span class="fu">return</span>(vec)</span>
 <span id="cb3-6"><a href="#cb3-6"></a>}</span>
 <span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a>x <span class="ot">&lt;-</span> <span class="fu">imputar_media</span>(<span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="cn">NA</span>, <span class="fl">4.0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8"></a>x <span class="ot">&lt;-</span> <span class="fu">imputar_media</span>(<span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">2.1</span>, <span class="cn">NA</span>, <span class="fl">4.0</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Mas claro y reutilizable.</p>
 </section></section>
@@ -494,7 +500,7 @@
 <span id="cb4-6"><a href="#cb4-6"></a>  </span>
 <span id="cb4-7"><a href="#cb4-7"></a>  vec[<span class="fu">is.na</span>(vec)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">return</span>(vec)</span>
-<span id="cb4-9"><a href="#cb4-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-9"><a href="#cb4-9"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ejemplo-2-advertencias" class="slide level2">
@@ -513,7 +519,7 @@
 <span id="cb5-11"><a href="#cb5-11"></a>  </span>
 <span id="cb5-12"><a href="#cb5-12"></a>  vec[<span class="fu">is.na</span>(vec)] <span class="ot">&lt;-</span> <span class="fu">mean</span>(vec, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb5-13"><a href="#cb5-13"></a>  <span class="fu">return</span>(vec)</span>
-<span id="cb5-14"><a href="#cb5-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-14"><a href="#cb5-14"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -545,14 +551,14 @@
 <span id="cb6-13"><a href="#cb6-13"></a>  }</span>
 <span id="cb6-14"><a href="#cb6-14"></a>  </span>
 <span id="cb6-15"><a href="#cb6-15"></a>  <span class="fu">return</span>(vec)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-16"><a href="#cb6-16"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 4 3 8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>), <span class="at">metodo =</span> <span class="st">"mediana"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>), <span class="at">metodo =</span> <span class="st">"mediana"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 3 8</code></pre>
 </div>
@@ -569,7 +575,7 @@
 <span id="cb11-5"><a href="#cb11-5"></a></span>
 <span id="cb11-6"><a href="#cb11-6"></a>suma_cuadrados <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
 <span id="cb11-7"><a href="#cb11-7"></a>  a<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> b<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-8"><a href="#cb11-8"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -580,7 +586,7 @@
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">stopifnot</span>(</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>))[<span class="dv">2</span>] <span class="sc">==</span> <span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">8</span>)) <span class="sc">&amp;</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="fu">imputar_valor</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">8</span>), <span class="at">metodo =</span> <span class="st">"mediana"</span>)[<span class="dv">2</span>] <span class="sc">==</span> <span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">8</span>))</span>
-<span id="cb12-4"><a href="#cb12-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -596,20 +602,20 @@
 <span id="cb13-5"><a href="#cb13-5"></a>    }</span>
 <span id="cb13-6"><a href="#cb13-6"></a>  }</span>
 <span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">return</span>(vec)</span>
-<span id="cb13-8"><a href="#cb13-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-8"><a href="#cb13-8"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="cn">NA</span>), <span class="dv">10000</span>)</span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="cn">NA</span>), <span class="dv">10</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">system.time</span>(<span class="fu">imputar_loop</span>(x))         </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">system.time</span>(<span class="fu">imputar_loop</span>(x))         </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  98.18   22.17  120.61 </code></pre>
+   0.01    0.00    0.00 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">system.time</span>(<span class="fu">imputar_valor</span>(x)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">system.time</span>(<span class="fu">imputar_valor</span>(x)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-   0.00    0.02    0.01 </code></pre>
+      0       0       0 </code></pre>
 </div>
 </div>
 <div class="footer footer-default">
@@ -916,12 +922,12 @@
         // flash "checked"
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
+        button.setAttribute("title", "Copiado");
         let tooltip;
         if (window.bootstrap) {
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
+          button.setAttribute("data-bs-title", "Copiado");
           tooltip = new bootstrap.Tooltip(button, 
             { trigger: "manual", 
               customClass: "code-copy-button-tooltip",
