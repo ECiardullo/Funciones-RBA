@@ -89,7 +89,7 @@ Mas claro y reutilizable.
 
 # Gestión de errores
 
-##¿Por qué es importante validar?
+## ¿Por qué es importante validar?
 
 - Prevenir errores inesperados.
 
@@ -170,7 +170,7 @@ imputar_valor <- function(vec, metodo = "media") {
 }
 
 ```
-
+---
 ```{r}
 #| echo: true
 imputar_valor(c(1, NA, 3, 8))
@@ -187,16 +187,67 @@ imputar_valor(c(1, NA, 3, 8), metodo = "mediana")
 
 ```{r}
 #| echo: true
-suma_cuadrados <- function(a, b) {
-  resultado <- a^2 + b^2
+suma2 <- function(a, b) {
+  resultado <- a + b
   return(resultado)
 }
 
-suma_cuadrados <- function(a, b) {
-  a^2 + b^2
+suma2 <- function(a, b) {
+  a + b
 }
 
 ```
+
+# Interacción con el entorno 
+
+```{r}
+#| echo: true
+
+a = 4 
+
+suma2 <- function(b = 2) {
+  a = a - 2 
+  resultado <- a + b
+  return(resultado)
+}
+
+#suma2()
+```
+
+¿Qué valor devuelve la función?
+¿Qué valor queda guardado en el objeto a?
+
+# missing 
+
+missing() se puede utilizar para comprobar si se ha especificado un valor como argumento de una función.
+
+```{r}
+#| echo: true
+suma2 <- function(a, b){
+  
+  if(missing(b)) b = a
+  
+  resultado <- a + b 
+  return(resultado)
+}
+
+suma2(a = 2)
+```
+
+# dot-dot-dot
+
+El argumento ... es un argumento especial útil para pasar un número desconocido de argumentos a otra función.
+
+```{r}
+#| echo: true
+suma2 <- function(a, b, ...){
+  
+  resultado <- sum(c(a, b), ... ) 
+  
+  return(resultado)
+}
+```
+
 
 # Testeo de funciones
 
@@ -231,7 +282,7 @@ imputar_loop <- function(vec) {
   return(vec)
 }
 ```
-
+---
 ```{r}
 #| echo: true
 x <- rep(c(1:100, NA), 10)
