@@ -4,9 +4,6 @@ subtitle: "Una introducción práctica al diseño y uso de funciones sin depende
 author: "Emanuel Ciardullo"
 institute: "R en Buenos Aires"
 lang: es
-language: 
-  title-block-author-single: "AUTOR"
-  title-block-affiliation-single: "INSTITUCION"
 format: revealjs
 editor: source
 ---
@@ -170,7 +167,8 @@ imputar_valor <- function(vec, metodo = "media") {
 }
 
 ```
----
+
+
 ```{r}
 #| echo: true
 imputar_valor(c(1, NA, 3, 8))
