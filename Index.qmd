@@ -4,8 +4,21 @@ subtitle: "Una introducción práctica al diseño y uso de funciones sin depende
 author: "Emanuel Ciardullo"
 institute: "R en Buenos Aires"
 lang: es
-format: revealjs
-editor: source
+format:
+  revealjs: 
+    theme: custom.scss
+    self-contained: false
+    logo: hex.png
+    highlight-style: a11y
+    css: logo.css
+    footer: "[**eciardullo.github.io/funciones-RBA**](https://github.com/ECiardullo/Funciones-RBA)"
+knitr:
+  opts_chunk: 
+    echo: true
+    collapse: true
+    comment: "#>"
+    fig.path: "figures/"
+from: markdown+emoji
 ---
 
 # Introducción
