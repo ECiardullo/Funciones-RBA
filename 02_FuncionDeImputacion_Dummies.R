@@ -1,4 +1,10 @@
-ImputacionKnn_Dummies <- function(x, q=NULL, w=NULL, lambda=NULL, knn=NULL, kernel ="gaussian", print.all=T){
+ImputacionKnn_Dummies <- function(x, 
+                                  q=NULL, 
+                                  w=NULL, 
+                                  lambda=NULL, 
+                                  knn=NULL, 
+                                  kernel ="gaussian", 
+                                  print.all=T){
   
   #### Librerias
   if(require(CVTuningCov)==T){require(CVTuningCov)} else{stop("Falta el paquete 'CVTuningCov'")}
