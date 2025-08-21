@@ -1,5 +1,5 @@
 ---
-title: "Funciones en R Base: Con paciencia y coraje"
+title: "Funciones en `R Base`: Con paciencia y coraje"
 subtitle: "Una introducción práctica al diseño y uso de funciones sin depender de paquetes"
 author: "Emanuel Ciardullo"
 institute: "R en Buenos Aires"
@@ -32,12 +32,16 @@ from: markdown+emoji
 
 ## Ventajas de usar funciones
 
+<br>
+
 - Evitan repetir código
 - Dividen el problema en partes
 - Facilitan la depuración y pruebas
 - Hacen que el código sea reutilizable
 
-# ¿Qué es una función?
+## ¿Qué es una función?
+
+<br>
 
 Una función tiene un nombre, argumentos y un cuerpo.
 
@@ -49,11 +53,11 @@ nombre <- function(argumentos) {
 }
 ```
 
-- nombre: como ejecutamos la función
+- **nombre**: como ejecutamos la función
 
-- argumentos: inputs que necesita la funcion
+- **argumentos**: inputs que necesita la funcion
 
-- operaciones: es el cuerpo de la funcion. Lo que se va a ejecutar.
+- **operaciones**: es el cuerpo de la funcion. Lo que se va a ejecutar.
 
 
 # Ejemplo: imputar valores faltantes
@@ -62,6 +66,8 @@ nombre <- function(argumentos) {
 
 ## ¿Qué problema queremos resolver?
 
+<br>
+
 - Tenemos una variable numérica con algunos valores `NA`.
 - Queremos reemplazar los `NA` por el **promedio de los valores no faltantes**.
 - Lo haremos primero con código suelto y luego con una función.
@@ -69,6 +75,9 @@ nombre <- function(argumentos) {
 ---
 
 ## Código sin función
+
+<br>
+<br>
 
 ```{r}
 #| echo: true
@@ -79,6 +88,9 @@ x[is.na(x)] <- mean(x, na.rm = TRUE)
 ```
 
 ## Función  
+
+<br>
+<br>
 
 ```{r}
 #| echo: true
@@ -92,11 +104,15 @@ imputar_media <- function(vec) {
 x <- imputar_media(c(1.5, 2.1, NA, 4.0))
 ```
 
-Mas claro y reutilizable.
+<br>
+
+> Más claro y reutilizable.
 
 # Gestión de errores
 
 ## ¿Por qué es importante validar?
+
+<br>
 
 - Prevenir errores inesperados.
 
@@ -107,6 +123,9 @@ Mas claro y reutilizable.
 ---
 
 ## Ejemplo 1:
+
+<br>
+<br>
 
 ```{r}
 #| echo: true
@@ -124,6 +143,8 @@ imputar_media <- function(vec) {
 ---
 
 ## Ejemplo 2: Advertencias
+
+<br>
 
 ```{r}
 #| echo: true
@@ -145,9 +166,11 @@ imputar_media <- function(vec) {
 ```
 
 
-# missing 
+## missing 
 
-missing() se puede utilizar para comprobar si se ha especificado un valor como argumento de una función.
+<br>
+
+`missing()` se puede utilizar para comprobar si se ha especificado un valor como argumento de una función.
 
 ```{r}
 #| echo: true
@@ -168,9 +191,11 @@ imputar_media <- function(vec) {
 
 ## ¿Qué son los valores por defecto?
 
-Argumentos que toman un valor predeterminado si no se especifican.
+<br>
 
-Permiten que la función sea más flexible y fácil de usar.
+- Argumentos que toman un valor predeterminado si no se especifican.
+
+- Permiten que la función sea más flexible y fácil de usar.
 
 ---
 
@@ -205,7 +230,7 @@ imputar_valor(c(1, NA, 3, 8), metodo = "mediana")
 
 ```
 
-# Uso de return()
+## Uso de `return()`
 
 • Devuelve un valor explícito
 
@@ -213,6 +238,7 @@ imputar_valor(c(1, NA, 3, 8), metodo = "mediana")
 
 • No siempre es obligatorio (pero si recomendable!!)
 
+<br>
 
 ```{r}
 #| echo: true
@@ -227,7 +253,9 @@ suma2 <- function(a, b) {
 
 ```
 
-# Interacción con el entorno 
+## Interacción con el entorno 
+
+<br>
 
 ```{r}
 #| echo: true
@@ -247,9 +275,11 @@ suma2 <- function(b = 2) {
 
 ¿Qué valor queda guardado en el objeto a?
 
-# missing 
+## missing 
 
-missing() se puede utilizar para comprobar si se ha especificado un valor como argumento de una función.
+`missing()` se puede utilizar para comprobar si se ha especificado un valor como argumento de una función.
+
+<br>
 
 ```{r}
 #| echo: true
@@ -264,9 +294,13 @@ suma2 <- function(a, b){
 suma2(a = 2)
 ```
 
-# dot-dot-dot
+## dot-dot-dot
+
+<br>
 
 El argumento ... es un argumento especial útil para pasar un número desconocido de argumentos a otra función.
+
+<br>
 
 ```{r}
 #| echo: true
@@ -279,12 +313,15 @@ suma2 <- function(a, b, ...){
 ```
 
 
-# Testeo de funciones
+## Testeo de funciones
+
+<br>
 
 • Confirma que la función hace lo esperado
 
 • Detecta errores antes de usarlas en producción
 
+<br>
 
 ```{r}
 #| echo: true
@@ -295,22 +332,25 @@ imputar_valor(c(1, NA, 3, 8), metodo = "mediana")[2] == median(c(1,3,8))
 
 ```
 
-# Debuguear funciones 
+## Debuguear funciones 
+<br>
+<br>
 
 ```{r}
 #| echo: true
+#| eval: false
 
-# debugonce()
+debugonce()
 
-# browser()
+browser()
 
 ```
 
-# Evaluar eficiencia 
+## Evaluar eficiencia 
 
 ¿Por qué importa la eficiencia?
 
-Algunas funciones se ejecutan miles de veces o sobre de bases de datos muy grandes.
+> Algunas funciones se ejecutan miles de veces o sobre de bases de datos muy grandes.
 La velocidad de ejecución puede afectar el rendimiento del análisis.
 
 ```{r}
@@ -342,15 +382,17 @@ system.time(imputar_valor(x))
 
 - Evitar las variables globales. Todos los inputs deberian ser parametros de la función.
 
-- Usar return().
+- Usar `return()`.
 
 - Ser consistente con el tipo del output. 
 
 - Las funciones deben hacer una sola cosa y ser lo mas simples posible. Es mejor hacer multiples funciones que una gran función dificil de entender.
 
-- No cargar paquetes en las funciones, usar package::functions.
+- No cargar paquetes en las funciones, usar `package::functions`.
 
-##
+# Preguntas
+
+
 
 ## Integrando la velocidad de C++ en R 
 
