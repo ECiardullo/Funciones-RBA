@@ -47,7 +47,6 @@ Una función tiene un nombre, argumentos y un cuerpo.
 
 ```{r}
 #| echo: true
-#| output-location: slide
 nombre <- function(argumentos) {
   operaciones
 }
