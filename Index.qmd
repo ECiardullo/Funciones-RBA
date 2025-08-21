@@ -30,15 +30,12 @@ from: markdown+emoji
 
 # ¿Por qué usamos funciones?
 
----
-
 ## Ventajas de usar funciones
 
 - Evitan repetir código
 - Dividen el problema en partes
 - Facilitan la depuración y pruebas
 - Hacen que el código sea reutilizable
-
 
 # ¿Qué es una función?
 
@@ -52,11 +49,11 @@ nombre <- function(argumentos) {
 }
 ```
 
--- nombre: como ejecutamos la función
+- nombre: como ejecutamos la función
 
--- argumentos: inputs que necesita la funcion
+- argumentos: inputs que necesita la funcion
 
--- operaciones: es el cuerpo de la funcion. Lo que se va a ejecutar.
+- operaciones: es el cuerpo de la funcion. Lo que se va a ejecutar.
 
 
 # Ejemplo: imputar valores faltantes
@@ -148,6 +145,25 @@ imputar_media <- function(vec) {
 ```
 
 
+# missing 
+
+missing() se puede utilizar para comprobar si se ha especificado un valor como argumento de una función.
+
+```{r}
+#| echo: true
+
+imputar_media <- function(vec) {
+  
+  if(missing(vec)) stop("Argumento faltante")
+  
+  vec[is.na(vec)] <- mean(vec, na.rm = TRUE)
+  return(vec)
+}
+
+#imputar_media()
+
+```
+
 # Valores por defecto
 
 ## ¿Qué son los valores por defecto?
@@ -192,7 +208,9 @@ imputar_valor(c(1, NA, 3, 8), metodo = "mediana")
 # Uso de return()
 
 • Devuelve un valor explícito
+
 • Mejora claridad del código
+
 • No siempre es obligatorio (pero si recomendable!!)
 
 
@@ -226,6 +244,7 @@ suma2 <- function(b = 2) {
 ```
 
 ¿Qué valor devuelve la función?
+
 ¿Qué valor queda guardado en el objeto a?
 
 # missing 
@@ -263,6 +282,7 @@ suma2 <- function(a, b, ...){
 # Testeo de funciones
 
 • Confirma que la función hace lo esperado
+
 • Detecta errores antes de usarlas en producción
 
 
@@ -272,6 +292,17 @@ stopifnot(
 imputar_valor(c(1, NA, 3, 8))[2] == mean(c(1,3,8)) &
 imputar_valor(c(1, NA, 3, 8), metodo = "mediana")[2] == median(c(1,3,8))
 )
+
+```
+
+# Debuguear funciones 
+
+```{r}
+#| echo: true
+
+# debugonce()
+
+# browser()
 
 ```
 
@@ -301,3 +332,28 @@ x <- rep(c(1:100, NA), 10)
 system.time(imputar_loop(x))         
 system.time(imputar_valor(x)) 
 ```
+
+
+# Buenas practicas a la hora de escribir funciones
+
+##
+
+- Documentar bien la función.
+
+- Evitar las variables globales. Todos los inputs deberian ser parametros de la función.
+
+- Usar return().
+
+- Ser consistente con el tipo del output. 
+
+- Las funciones deben hacer una sola cosa y ser lo mas simples posible. Es mejor hacer multiples funciones que una gran función dificil de entender.
+
+- No cargar paquetes en las funciones, usar package::functions.
+
+##
+
+## Integrando la velocidad de C++ en R 
+
+![](RCPP.jpeg)
+
+# Gracias
